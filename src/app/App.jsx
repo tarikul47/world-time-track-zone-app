@@ -14,6 +14,7 @@ import {
 } from "../utils/utils";
 import Clocks from "../components/Clocks/Clocks";
 import timezone from "../public/timezone.json";
+import Footer from "../components/UI/Footer/Footer";
 
 /**
  * City dropdown list
@@ -120,7 +121,7 @@ const App = () => {
     const { isValid, errors } = checkValidity(eventFormValues);
     const { id, zone, event, eventTime } = eventFormValues;
 
-   // console.log(id, zone, event, eventTime);
+    // console.log(id, zone, event, eventTime);
 
     // validation check
     if (isValid) {
@@ -128,14 +129,21 @@ const App = () => {
 
       if (!id) {
         console.log("id has no - new clock need to added");
-        setClocks([
-          {
-            id: guid.next().value,
-            ...eventFormValues,
-          },
-          ...clocks,
-        ]);
-        setEventFormValues({ ...intialvalues });
+        // check if exist clcok zone
+        const isAvaiabelZone = clocks.filter((item) => item.zone === zone);
+        console.log(isAvaiabelZone.length);
+        if (isAvaiabelZone.length === 0) {
+          setClocks([
+            {
+              id: guid.next().value,
+              ...eventFormValues,
+            },
+            ...clocks,
+          ]);
+          setEventFormValues({ ...intialvalues });
+        } else {
+          alert("Sorry!!! Already added the Clock zone");
+        }
       } else {
         console.log("id got =  need to update the clock");
         // find the object
@@ -148,7 +156,9 @@ const App = () => {
           updateObj[0]["eventTime"] = eventFormValues.eventTime;
           //updateObj[0]["zone"] = eventFormValues.zone;
         } else {
-          alert("Sorry!!! you can't update Clock Zone");
+          alert(
+            "Sorry!!! you can't update Clock Zone, but you can update only Event and event time."
+          );
         }
 
         //console.log(updateObj[0]["zone"]);
@@ -253,6 +263,7 @@ const App = () => {
         handleEditClock={handleEditClock}
         second={second}
       ></Clocks>
+      <Footer> World Clock by @Tarikul Islam</Footer>
     </>
   );
 };
