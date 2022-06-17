@@ -1,0 +1,26 @@
+[
+  {
+    "ISO": "AF",
+    "Country": "Afghanistan",
+    "Timezone": "UTC",
+    "Offset": 270
+  },
+  {
+    "ISO": "AF",
+    "Country": "Afghanistan",
+    "Timezone": "GMT",
+    "Offset": 270
+  },
+  {
+    "ISO": "AF",
+    "Country": "Afghanistan",
+    "Timezone": "PST",
+    "Offset": 270
+  },
+  {
+    "ISO": "AF",
+    "Country": "Afghanistan",
+    "Timezone": "EST",
+    "Offset": 270
+  }
+]

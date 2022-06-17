@@ -13,13 +13,14 @@ import {
   defaultClcoks,
 } from "../utils/utils";
 import Clocks from "../components/Clocks/Clocks";
-import timezone from "../public/timezone.json";
+import baseTimeZone from "../public/baseTimeZone.json";
 import Footer from "../components/UI/Footer/Footer";
+
 
 /**
  * City dropdown list
  */
-let optionItems = timezone.map((zone) => (
+let optionItems = baseTimeZone.map((zone) => (
   <option value={zone.Timezone} key={zone.Timezone}>
     {zone.Timezone}
   </option>
@@ -218,10 +219,6 @@ const App = () => {
               </span>
             </span>
             <span>
-              <b>City : </b>
-              {defaultClock.zone.split("/")[1]}
-            </span>
-            <span>
               {getTimezoneOffset(defaultClock.zone, new Date(2016, 0, 1))}
             </span>
             <span></span>
@@ -246,7 +243,7 @@ const App = () => {
                   {/* <Message>This is the validation message</Message> */}
                 </FormGroup>
                 <FormGroup margin="20px 10px">
-                  <Input type="submit" />
+                  <Input cursor="pointer" type="submit" />
                 </FormGroup>
               </FlexBox>
             </form>
