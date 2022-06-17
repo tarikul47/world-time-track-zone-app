@@ -85,7 +85,7 @@ const Clocks = ({
                 <Message><b>{errors.zone}</b></Message>
               </FormGroup>
               <FormGroup>
-                <Input cursor="pointer" type="submit" />
+                <Input cursor="pointer" type='submit' value={eventFormValues.id ? 'Update': 'Submit'}/>
               </FormGroup>
             </FlexBox>
           </form>
